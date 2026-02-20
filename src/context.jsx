@@ -53,16 +53,25 @@ const AppProvider = ({ children }) => {
 
   if (!token || token === undefined) {
     localStorage.removeItem('token')
-    console.log('token not found')
   }
 
   useEffect(() => {
     const query = searchTerm || 'gym'
     fetchPhotos(query)
 
+    // if (token) {
+    //   const decoded = jwtDecode(token)
+    //   setUser(decoded)
+    // }
+
     if (token) {
-      const decoded = jwtDecode(token)
-      setUser(decoded)
+      try {
+        const decoded = jwtDecode(token)
+        setUser(decoded)
+      } catch (err) {
+        console.error('Invalid token:', err)
+        localStorage.removeItem('token')
+      }
     }
 
     if (token && userId) {

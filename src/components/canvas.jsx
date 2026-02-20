@@ -12,12 +12,8 @@ const canvas = () => {
     activeId,
     setActiveId,
     changeInputTo,
-    addFavorite,
-    navigateLogin,
-    token,
     likedImage,
     toggleLikedImage,
-    removeFavorite,
     handleLike,
   } = useGlobalContext()
 
