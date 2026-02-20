@@ -234,8 +234,6 @@ const AppProvider = ({ children }) => {
     })
     const data = await response.json()
     setFavoritedImages(data.msg)
-
-    setLikedImage(data.msg.map((item) => item.externalId))
   }
 
   // handle like/dislike button click in canvas and profile components

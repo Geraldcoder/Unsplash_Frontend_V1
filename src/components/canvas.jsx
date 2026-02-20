@@ -43,52 +43,53 @@ const canvas = () => {
         </ul>
       </div>
       <div className='mx-6 block columns-1 md:columns-2 lg:columns-3 gap-6'>
-        {fetchedImages.map((image) => {
-          const {
-            id,
-            alt_description,
-            urls: { thumb, regular },
-            user: {
-              name,
-              profile_image: { small },
-            },
-          } = image
-          return (
-            <div key={id} className='relative break-inside-avoid parent mb-7'>
-              <div
-                className={`px-3 py-1 rounded-sm text-gray-500 hover:text-black absolute top-5 right-5 overlay ${likedImage.includes(id) ? 'bg-green-500 text-white' : 'bg-white'}`}
-                title='add to favorites'
-                onClick={() => {
-                  handleLike(image)
-                  toggleLikedImage(id)
-                }}
-              >
-                <i className='fa-solid fa-plus'></i>
-              </div>
-              <img
-                key={id}
-                src={loadedImages[id] ? regular : thumb}
-                className={`w-full transition-opacity duration-500 ${loadedImages[id] ? 'opacity-100' : 'opacity-0'}`}
-                onLoad={() => handleImageLoad(id)}
-                alt={alt_description}
-                title={alt_description}
-              />
-              <div className='flex justify-between relative bottom-13 items-center px-5 overlay'>
-                <div className='flex gap-2 items-center'>
-                  <img src={small} alt={name} className='rounded-full w-7' />
-                  <p className='text-white font-medium'>{name}</p>
-                </div>
+        {fetchedImages &&
+          fetchedImages.map((image) => {
+            const {
+              id,
+              alt_description,
+              urls: { thumb, regular },
+              user: {
+                name,
+                profile_image: { small },
+              },
+            } = image
+            return (
+              <div key={id} className='relative break-inside-avoid parent mb-7'>
                 <div
-                  className='bg-white px-3 rounded-sm text-gray-500 hover:text-black'
-                  title='download'
-                  onClick={() => downlaodImage(regular, `${alt_description}`)}
+                  className={`px-3 py-1 rounded-sm text-gray-500 hover:text-black absolute top-5 right-5 overlay ${likedImage.includes(id) ? 'bg-green-500 text-white' : 'bg-white'}`}
+                  title='add to favorites'
+                  onClick={() => {
+                    handleLike(image)
+                    toggleLikedImage(id)
+                  }}
                 >
-                  <i className='fa-solid fa-arrow-down'></i>
+                  <i className='fa-solid fa-plus'></i>
+                </div>
+                <img
+                  key={id}
+                  src={loadedImages[id] ? regular : thumb}
+                  className={`w-full transition-opacity duration-500 ${loadedImages[id] ? 'opacity-100' : 'opacity-0'}`}
+                  onLoad={() => handleImageLoad(id)}
+                  alt={alt_description}
+                  title={alt_description}
+                />
+                <div className='flex justify-between relative bottom-13 items-center px-5 overlay'>
+                  <div className='flex gap-2 items-center'>
+                    <img src={small} alt={name} className='rounded-full w-7' />
+                    <p className='text-white font-medium'>{name}</p>
+                  </div>
+                  <div
+                    className='bg-white px-3 rounded-sm text-gray-500 hover:text-black'
+                    title='download'
+                    onClick={() => downlaodImage(regular, `${alt_description}`)}
+                  >
+                    <i className='fa-solid fa-arrow-down'></i>
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
       </div>
       <div className='flex flex-col items-center py-3'>
         <div className='flex gap-3'>
