@@ -96,7 +96,7 @@ const AppProvider = ({ children }) => {
 
   // Login functionality
 
-  const loginUrl = 'http://localhost:3000/auth/login'
+  const loginUrl = 'https://unsplash-backend-v1.onrender.com/auth/login'
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -126,7 +126,7 @@ const AppProvider = ({ children }) => {
 
   // Register functionality
 
-  const registerUrl = 'http://localhost:3000/auth/register'
+  const registerUrl = 'https://unsplash-backend-v1.onrender.com/auth/register'
 
   const handleRegister = async (e) => {
     e.preventDefault()
@@ -173,7 +173,7 @@ const AppProvider = ({ children }) => {
   }
 
   // Add to favorite functionality
-  const favoriteUrl = 'http://localhost:3000/photos'
+  const favoriteUrl = 'https://unsplash-backend-v1.onrender.com/photos'
 
   const addFavorite = async (photo) => {
     const {
@@ -224,7 +224,7 @@ const AppProvider = ({ children }) => {
   }
 
   // fetch liked images
-  const favUrl = 'http://localhost:3000/photos'
+  const favUrl = 'https://unsplash-backend-v1.onrender.com/photos'
 
   const fetchLikedImages = async () => {
     const response = await fetch(favUrl, {
